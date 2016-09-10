@@ -6,11 +6,18 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites"/>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\RPGTileset</background>
+    <background>background\TiledTest</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\Test.gml</script>
   </scripts>
+  <objects name="objects"/>
+  <rooms name="rooms">
+    <room>rooms\MistyForest</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>
