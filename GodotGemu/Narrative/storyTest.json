@@ -23,7 +23,10 @@
             },
             "iSee": {
                 "content": [
-                    "I see!"
+                    "I see!",
+					{
+						"divert": "alrightGreatNowW"
+					}
                 ]
             },
             "lookSorryThatWas": {
@@ -59,7 +62,7 @@
                         "option": "Boy"
                     },
                     {
-                        "linkPath": null,
+                        "linkPath": "lookSorryThatWas",
                         "ifConditions": null,
                         "notIfConditions": null,
                         "option": "Girl"
@@ -68,7 +71,10 @@
             },
             "alrightGreatNowW": {
                 "content": [
-                    "Alright, great. Now what's your full, legal name?"
+                    "Alright, great. Now what's your full, legal name?",
+					{
+						"isEnd": true
+					}
                 ]
             },
             "ahISeeYoureAGrow": {
