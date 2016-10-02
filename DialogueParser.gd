@@ -9,19 +9,14 @@ var currChoices = []
 var isChoice = false
 var isChoiceDialogue = false
 var isEnd = false
+var events = { }
 
-func init_dialogue():
-	load_file_as_JSON("Narrative/storyTest.json", myStory)
-	initStory = myStory["data"]["stitches"]
-	currDialogue = initStory[myStory["data"]["initial"]]["content"]
-	if currDialogue[1] != null:
-		if currDialogue[1].has("divert"):
-			isChoice = false
-			isChoiceDialogue = false
-		if currDialogue[1].has("linkPath"):
-			isChoice = true
-			isChoiceDialogue = true
-	panelNode.get_node("Label").set_text(currDialogue[0])
+#TO-DO: Keep another file of "story flags" indicating
+#actions player has done to dictate how we should look up events
+#perhaps make an event handler with functions to decide what to
+#return here based on the file
+func look_up_event(target):
+	return events["eventTarget"][target]["Start"]
 
 func load_file_as_JSON(path, target):
     var file = File.new()
@@ -102,6 +97,7 @@ func set_next_dialogue(target):
 		set_choice_values()
 	else:
 		isEnd = true
+		get_node("../Player/KinematicBody2D").canMove = true
 		panelNode.set_hidden(true)
 
 func get_user_choice(target):
@@ -129,10 +125,9 @@ func _on_button_pressed(target):
 		textToShow = currDialogue[0]
 	panelNode.get_node("Label").set_text(textToShow)
 
-func init_dialogue_system():
+func init_dialogue(target):
 	
 	isDialogueEvent = false
-	myStory = { }
 	initStory = null
 	currDialogue = null
 	currChoices = []
@@ -140,11 +135,26 @@ func init_dialogue_system():
 	isChoiceDialogue = false
 	isEnd = false
 	
+	target = look_up_event(target)
+	
 	panelNode.show()
-	init_dialogue()
+	
+	initStory = myStory["data"][target]
+	currDialogue = initStory[initStory["initial"]]["content"]
+	if currDialogue[1] != null:
+		if currDialogue[1].has("divert"):
+			isChoice = false
+			isChoiceDialogue = false
+		if currDialogue[1].has("linkPath"):
+			isChoice = true
+			isChoiceDialogue = true
+	panelNode.get_node("Label").set_text(currDialogue[0])
 
 func _ready():
 	set_process_input(true)
+	
+	load_file_as_JSON("Narrative/storyTest.json", myStory)
+	load_file_as_JSON("Narrative/events.json", events)
 	
 	panelNode = get_node("../CanvasLayer/Panel")
 	

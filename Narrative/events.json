@@ -1,0 +1,12 @@
+{
+    "eventTarget": {
+        "Professor": {
+            "Start" : "storyTest",
+            "ItemFound" : "storyTestItemFound"
+        },
+        "Item": {
+            "Start" : "itemInitial",
+            "Repeat" : "storyTestItemFound"
+        }
+    }
+}

@@ -12,7 +12,27 @@
             "playPoint": "alrightGreatNowW",
             "libraryVisible": true
         },
-        "stitches": {
+        "itemInitial" : {
+            "initial": "0",
+            "0" : {
+                "content": [
+                    "It's a brick.",
+                    {
+                        "divert": "1"
+                    }
+                ]
+            },
+            "1": {
+                "content": [
+                    "Yup, definitely a brick.",
+                    {
+                        "isEnd": true
+                    }
+                ]
+            }
+        },
+        "storyTest": {
+            "initial": "helloThereYoungC",
             "okayIUnderstandI": {
                 "content": [
                     "Okay, I understand, I hear you-- Ah, wait!\u00a0The form I have here only has two checkboxes, so... Uh... How about we pick one at random?",
