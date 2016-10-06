@@ -12,6 +12,47 @@
             "playPoint": "alrightGreatNowW",
             "libraryVisible": true
         },
+        "angryResponse":{
+            "initial": "0",
+            "0": {
+                "content":[
+                    "AAAAAHHHHH! >:(",
+                    {
+                        "isEnd": true
+                    }
+                ]
+            }
+        },
+        "storyTestRepeat":{
+            "initial": "0",
+            "0": {
+                "content": [
+                    "Excuse me, I *said*: What is your name?",
+                    {
+                        "isEnd" : true
+                    }
+                ]
+            }
+        },
+        "itemFound":{
+            "initial": "0",
+            "0" : {
+                "content": [
+                    "Nothing's changed here. It's still a brick.",
+                    {
+                        "divert": "1"
+                    }
+                ]
+            },
+            "1":{
+                "content":[
+                    "Seriously, I have better things to do.",
+                    {
+                        "isEnd": true
+                    }
+                ]
+            }
+        },
         "itemInitial" : {
             "initial": "0",
             "0" : {
@@ -20,7 +61,8 @@
                     {
                         "divert": "1"
                     }
-                ]
+                ],
+                "choices": "itemInitial"
             },
             "1": {
                 "content": [
@@ -141,7 +183,6 @@
                     }
                 ]
             }
-        },
-        "allowCheckpoints": false
+        }
     }
 }

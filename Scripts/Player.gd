@@ -14,10 +14,9 @@ func _ready():
 func _fixed_process(delta):
 	if(canMove):
 		move_player()
-	handle_interactions()
 		
-func handle_interactions():
-	if(canInteract and Input.is_key_pressed(KEY_E)):
+func _input(event):
+	if(canInteract and event.is_action_pressed("interact")):
 		get_node("../../DialogueParser").init_dialogue(target.get_name())
 		canMove = false
 
@@ -34,9 +33,13 @@ func move_player():
 	move(move_direction.normalized() * speed)
 
 func _on_Area2D_body_enter(body, obj):
-	canInteract = true
-	target = obj
+	if(body.get_parent().get_name() == "Player"):
+		canInteract = true
+		target = obj
+		print("Entered")
 	
 func _on_Area2D_body_exit(body, obj):
-	canInteract = false
-	target = null
+	if(body.get_parent().get_name() == "Player"):
+		canInteract = false
+		print("Exited")
+		target = null

@@ -1,12 +1,15 @@
+
 {
     "eventTarget": {
         "Professor": {
-            "Start" : "storyTest",
-            "ItemFound" : "storyTestItemFound"
+            "Start" : {"Name": "storyTest", "Flag": false},
+            "Repeat" : {"Name": "storyTestRepeat", "Flag": false},
+            "Angry": {"Name": "angryResponse", "Flag": "checkedBrick"}
         },
         "Item": {
-            "Start" : "itemInitial",
-            "Repeat" : "storyTestItemFound"
+            "Start" : {"Name": "itemInitial", "Flag": false},
+            "Repeat" : {"Name": "itemFound", "Flag": false}
         }
-    }
+    },
+    "SceneName": "Scene1"
 }

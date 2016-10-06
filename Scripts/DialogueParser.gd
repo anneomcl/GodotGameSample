@@ -10,13 +10,37 @@ var isChoice = false
 var isChoiceDialogue = false
 var isEnd = false
 var events = { }
+var choices = { }
 
 #TO-DO: Keep another file of "story flags" indicating
-#actions player has done to dictate how we should look up events
-#perhaps make an event handler with functions to decide what to
+#actions player has done, use these to dictate how we should look up events
+#and make an event handler with functions to decide what to
 #return here based on the file
+#TO-DO: Write truth values changed in dialogue processor back to this file
+#returns the key to the initial dialogue branch
+
+#Default path will always be "eventTarget" : <Target> : "Start" : ...
+func choose_dialogue_branch(target):
+	var possibleBranches = look_up_event(target)
+	var branch = choose_dialogue(possibleBranches, choices)
+	if(branch != null):
+		return branch
+	elif(!possibleBranches["Start"]["Flag"]):
+		possibleBranches["Start"]["Flag"] = true
+		return possibleBranches["Start"]["Name"]
+	else:
+		possibleBranches["Repeat"]["Flag"] = true
+		return possibleBranches["Repeat"]["Name"]
+
+func choose_dialogue(possibilities, choices):
+	for item in possibilities:
+		if(item != "Start" and item != "Repeat"):
+			if(choices[possibilities[item]["Flag"]]):
+				return possibilities[item]["Name"]
+	return null
+
 func look_up_event(target):
-	return events["eventTarget"][target]["Start"]
+	return events["eventTarget"][target]
 
 func load_file_as_JSON(path, target):
     var file = File.new()
@@ -135,7 +159,8 @@ func init_dialogue(target):
 	isChoiceDialogue = false
 	isEnd = false
 	
-	target = look_up_event(target)
+	get_node("../" + target).update_choices(choices)
+	target = choose_dialogue_branch(target)
 	
 	panelNode.show()
 	
@@ -155,6 +180,7 @@ func _ready():
 	
 	load_file_as_JSON("Narrative/storyTest.json", myStory)
 	load_file_as_JSON("Narrative/events.json", events)
+	load_file_as_JSON("Narrative/choices.json", choices)
 	
 	panelNode = get_node("../CanvasLayer/Panel")
 	

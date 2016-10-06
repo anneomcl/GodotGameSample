@@ -1,16 +1,19 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://Scripts/GameInit.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Grass.png" type="Texture" id=2]
-[ext_resource path="res://Textures/Sprites/brick.png" type="Texture" id=3]
-[ext_resource path="res://Scripts/DialogueParser.gd" type="Script" id=4]
-[ext_resource path="res://icon.png" type="Texture" id=5]
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=6]
+[ext_resource path="res://Item.gd" type="Script" id=3]
+[ext_resource path="res://Textures/Sprites/brick.png" type="Texture" id=4]
+[ext_resource path="res://Professor.gd" type="Script" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/ChoiceProcessor.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/DialogueParser.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 69, 65 )
+extents = Vector2( 69, 38 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -44,12 +47,15 @@ texture = ExtResource( 2 )
 
 [node name="Item" type="Node" parent="." groups=[ "Interactable" ]]
 
+editor/display_folded = true
+script/script = ExtResource( 3 )
+
 [node name="Area2D" type="Area2D" parent="Item"]
 
 transform/pos = Vector2( 992, 172 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -4 )
+shapes/0/transform = Matrix32( 0.930556, 0, 0, 1, 5, -4 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -58,7 +64,8 @@ angular_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Item/Area2D"]
 
-transform/pos = Vector2( 0, -4 )
+transform/pos = Vector2( 5, -4 )
+transform/scale = Vector2( 0.930556, 1 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
@@ -80,7 +87,7 @@ bounce = 0.0
 [node name="Sprite" type="Sprite" parent="Item/StaticBody2D"]
 
 transform/pos = Vector2( 4, -4 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Item/StaticBody2D"]
 
@@ -91,6 +98,7 @@ _update_shape_index = 0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -137,15 +145,14 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="DialogueParser" type="Node" parent="."]
-
-script/script = ExtResource( 4 )
-
 [node name="Professor" type="Node" parent="." groups=[ "Interactable" ]]
+
+script/script = ExtResource( 5 )
 
 [node name="Area2D" type="Area2D" parent="Professor"]
 
-transform/pos = Vector2( 405, 20 )
+transform/pos = Vector2( 401.5, 26 )
+transform/scale = Vector2( 0.890625, 0.8125 )
 input/pickable = true
 shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -178,7 +185,7 @@ bounce = 0.0
 [node name="Sprite" type="Sprite" parent="Professor/StaticBody2D"]
 
 transform/scale = Vector2( 4, 4 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Professor/StaticBody2D"]
 
@@ -201,7 +208,7 @@ shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
-script/script = ExtResource( 6 )
+script/script = ExtResource( 7 )
 
 [node name="Camera2D" type="Camera2D" parent="Player/KinematicBody2D"]
 
@@ -226,7 +233,7 @@ drag_margin/bottom = 0.2
 
 [node name="Sprite" type="Sprite" parent="Player/KinematicBody2D"]
 
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/KinematicBody2D"]
 
@@ -234,5 +241,13 @@ transform/scale = Vector2( 2.69231, 2.46154 )
 shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
+
+[node name="EventParser" type="Node" parent="."]
+
+script/script = ExtResource( 8 )
+
+[node name="DialogueParser" type="Node" parent="."]
+
+script/script = ExtResource( 9 )
 
 
