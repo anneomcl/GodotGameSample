@@ -1,0 +1,14 @@
+{
+    "skills": {
+        "Persuasion": false,
+        "Disguise": false,
+        "Sneak": false,
+        "Lockpicking":false,
+        "Strength": false,
+        "Magic": false,
+        "Multilingual": false,
+        "Street": false,
+        "Noble": false,
+        "Lucky": false
+    }
+}

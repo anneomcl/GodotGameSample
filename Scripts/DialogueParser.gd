@@ -28,10 +28,13 @@ func choose_dialogue_branch(target):
 	elif(!possibleBranches["Start"]["Flag"]):
 		possibleBranches["Start"]["Flag"] = true
 		return possibleBranches["Start"]["Name"]
-	else:
+	elif("Repeat" in possibleBranches):
 		possibleBranches["Repeat"]["Flag"] = true
 		return possibleBranches["Repeat"]["Name"]
-
+	else:
+		possibleBranches["Start"]["Flag"] = true
+		return possibleBranches["Start"]["Name"]
+		
 func choose_dialogue(possibilities, choices):
 	for item in possibilities:
 		if(item != "Start" and item != "Repeat"):

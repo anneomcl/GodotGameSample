@@ -4,6 +4,8 @@ var speed = 3
 var move_direction = Vector2(0, 0)
 var target
 
+var inventory = []
+
 var canMove = true
 var canInteract = false
 
@@ -19,6 +21,9 @@ func _input(event):
 	if(canInteract and event.is_action_pressed("interact")):
 		get_node("../../DialogueParser").init_dialogue(target.get_name())
 		canMove = false
+		if(target.is_in_group("Item") and inventory.find(target.get_name()) < 0):
+			inventory.append(target.get_name())
+			print(inventory) #TODO: delete this
 
 func move_player():
 	move_direction = Vector2(0,0)
@@ -36,10 +41,8 @@ func _on_Area2D_body_enter(body, obj):
 	if(body.get_parent().get_name() == "Player"):
 		canInteract = true
 		target = obj
-		print("Entered")
 	
 func _on_Area2D_body_exit(body, obj):
 	if(body.get_parent().get_name() == "Player"):
 		canInteract = false
-		print("Exited")
 		target = null

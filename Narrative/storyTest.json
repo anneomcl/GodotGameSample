@@ -12,6 +12,17 @@
             "playPoint": "alrightGreatNowW",
             "libraryVisible": true
         },
+        "invitationGet":{
+            "initial": "0",
+            "0": {
+                "content":[
+                    "You received an invitation to the party!",
+                    {
+                        "isEnd": true
+                    }
+                ]
+            }
+        },
         "angryResponse":{
             "initial": "0",
             "0": {

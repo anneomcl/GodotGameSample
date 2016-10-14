@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=1]
+[gd_scene load_steps=16 format=1]
 
 [ext_resource path="res://Scripts/GameInit.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Grass.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/ChoiceProcessor.gd" type="Script" id=8]
 [ext_resource path="res://Scripts/DialogueParser.gd" type="Script" id=9]
+[ext_resource path="res://GenericItem.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -45,9 +46,8 @@ transform/pos = Vector2( 395, 300 )
 transform/scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
 
-[node name="Item" type="Node" parent="." groups=[ "Interactable" ]]
+[node name="Item" type="Node" parent="." groups=[ "Item", "Interactable" ]]
 
-editor/display_folded = true
 script/script = ExtResource( 3 )
 
 [node name="Area2D" type="Area2D" parent="Item"]
@@ -55,7 +55,7 @@ script/script = ExtResource( 3 )
 transform/pos = Vector2( 992, 172 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 0.930556, 0, 0, 1, 5, -4 )
+shapes/0/transform = Matrix32( 0.930556, 0, 0, 1, 5, -1 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -64,7 +64,7 @@ angular_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Item/Area2D"]
 
-transform/pos = Vector2( 5, -4 )
+transform/pos = Vector2( 5, -1 )
 transform/scale = Vector2( 0.930556, 1 )
 shape = SubResource( 1 )
 trigger = false
@@ -98,7 +98,6 @@ _update_shape_index = 0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -250,4 +249,15 @@ script/script = ExtResource( 8 )
 
 script/script = ExtResource( 9 )
 
+[node name="Invitation" parent="." groups=[ "Item", "Interactable" ] instance=ExtResource( 10 )]
 
+[node name="Area2D" parent="Invitation"]
+
+transform/pos = Vector2( 52, 252 )
+
+[node name="StaticBody2D" parent="Invitation"]
+
+transform/pos = Vector2( 52, 252 )
+
+
+[editable path="Invitation"]

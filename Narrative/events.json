@@ -9,6 +9,9 @@
         "Item": {
             "Start" : {"Name": "itemInitial", "Flag": false},
             "Repeat" : {"Name": "itemFound", "Flag": false}
+        },
+        "Invitation": {
+            "Start" : {"Name": "invitationGet", "Flag": false}
         }
     },
     "SceneName": "Scene1"
