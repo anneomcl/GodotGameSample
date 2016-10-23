@@ -12,42 +12,41 @@
             "playPoint": "alrightGreatNowW",
             "libraryVisible": true
         },
-        "invitationGet":{
-            "initial": "0",
+        "invitationGet": {
             "0": {
-                "content":[
+                "content": [
                     "You received an invitation to the party!",
                     {
                         "isEnd": true
                     }
                 ]
-            }
+            },
+            "initial": "0"
         },
-        "angryResponse":{
-            "initial": "0",
+        "angryResponse": {
             "0": {
-                "content":[
+                "content": [
                     "AAAAAHHHHH! >:(",
                     {
                         "isEnd": true
                     }
                 ]
-            }
+            },
+            "initial": "0"
         },
-        "storyTestRepeat":{
-            "initial": "0",
+        "storyTestRepeat": {
             "0": {
                 "content": [
                     "Excuse me, I *said*: What is your name?",
                     {
-                        "isEnd" : true
+                        "isEnd": true
                     }
                 ]
-            }
+            },
+            "initial": "0"
         },
-        "itemFound":{
-            "initial": "0",
-            "0" : {
+        "itemFound": {
+            "0": {
                 "content": [
                     "Nothing's changed here. It's still a brick.",
                     {
@@ -55,18 +54,18 @@
                     }
                 ]
             },
-            "1":{
-                "content":[
+            "1": {
+                "content": [
                     "Seriously, I have better things to do.",
                     {
                         "isEnd": true
                     }
                 ]
-            }
+            },
+            "initial": "0"
         },
-        "itemInitial" : {
-            "initial": "0",
-            "0" : {
+        "itemInitial": {
+            "0": {
                 "content": [
                     "It's a brick.",
                     {
@@ -82,13 +81,14 @@
                         "isEnd": true
                     }
                 ]
-            }
+            },
+            "initial": "0"
         },
         "storyTest": {
             "initial": "helloThereYoungC",
             "okayIUnderstandI": {
                 "content": [
-                    "Okay, I understand, I hear you-- Ah, wait!\u00a0The form I have here only has two checkboxes, so... Uh... How about we pick one at random?",
+                    "Okay, I understand, I hear you-- Ah, wait! The form I have here only has two checkboxes, so... Uh... How about we pick one at random?",
                     {
                         "divert": "coinFlipSaysAhhI"
                     }
@@ -97,9 +97,9 @@
             "iSee": {
                 "content": [
                     "I see!",
-					{
-						"divert": "alrightGreatNowW"
-					}
+                    {
+                        "divert": "alrightGreatNowW"
+                    }
                 ]
             },
             "lookSorryThatWas": {
@@ -145,9 +145,9 @@
             "alrightGreatNowW": {
                 "content": [
                     "Alright, great. Now what's your full, legal name?",
-					{
-						"isEnd": true
-					}
+                    {
+                        "isEnd": true
+                    }
                 ]
             },
             "ahISeeYoureAGrow": {
@@ -188,7 +188,7 @@
             },
             "butOfCourseIAmTh": {
                 "content": [
-                    "But of course! I am the harbinger of your coming of age, you see! Of all young whippersnappers looking to adventure in the world, and complete\u00a0a little character arc I like to call... adolescence :')",
+                    "But of course! I am the harbinger of your coming of age, you see! Of all young whippersnappers looking to adventure in the world, and complete a little character arc I like to call... adolescence :')",
                     {
                         "divert": "anywayEnoughOfTh"
                     }

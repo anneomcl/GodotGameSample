@@ -24,6 +24,7 @@ func _input(event):
 		if(target.is_in_group("Item") and inventory.find(target.get_name()) < 0):
 			inventory.append(target.get_name())
 			print(inventory) #TODO: delete this
+			print(target.suspicion)
 
 func move_player():
 	move_direction = Vector2(0,0)

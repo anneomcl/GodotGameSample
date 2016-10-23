@@ -37,7 +37,8 @@ func choose_dialogue_branch(target):
 		
 func choose_dialogue(possibilities, choices):
 	for item in possibilities:
-		if(item != "Start" and item != "Repeat"):
+		if(item != "Start" and item != "Repeat"
+			 and item != "Suspicion" and item != "Suspect"):
 			if(choices[possibilities[item]["Flag"]]):
 				return possibilities[item]["Name"]
 	return null

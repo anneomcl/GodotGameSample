@@ -1,18 +1,52 @@
-
 {
+    "SceneName": "Scene1",
     "eventTarget": {
-        "Professor": {
-            "Start" : {"Name": "storyTest", "Flag": false},
-            "Repeat" : {"Name": "storyTestRepeat", "Flag": false},
-            "Angry": {"Name": "angryResponse", "Flag": "checkedBrick"}
+        "Guard": {
+            "Start": {
+                "Name": "entrGuardInitial",
+                "Flag": false
+            },
+            "Repeat": {
+                "Name": "entrGuardRepeat",
+                "Flag": false
+            }
         },
-        "Item": {
-            "Start" : {"Name": "itemInitial", "Flag": false},
-            "Repeat" : {"Name": "itemFound", "Flag": false}
+        "Professor": {
+            "Start": {
+                "Name": "storyTest",
+                "Flag": false
+            },
+            "Angry": {
+                "Name": "angryResponse",
+                "Flag": "checkedBrick"
+            },
+            "Repeat": {
+                "Name": "storyTestRepeat",
+                "Flag": false
+            }
         },
         "Invitation": {
-            "Start" : {"Name": "invitationGet", "Flag": false}
+            "Suspicion": 0,
+            "Start": {
+                "Name": "invitationGet",
+                "Flag": false
+            },
+            "Suspect": []
+        },
+        "Item": {
+            "Suspicion": 5,
+            "Start": {
+                "Name": "itemInitial",
+                "Flag": false
+            },
+            "Suspect": [
+                "Professor",
+                "Guard"
+            ],
+            "Repeat": {
+                "Name": "itemFound",
+                "Flag": false
+            }
         }
-    },
-    "SceneName": "Scene1"
+    }
 }
