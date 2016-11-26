@@ -5,3 +5,6 @@ func _ready():
 	
 func update_choices(choices):
 	pass
+	
+func action(inventory):
+	pass

@@ -1,5 +1,4 @@
 extends Node
-var suspicion = 1
 
 func _ready():
 	pass

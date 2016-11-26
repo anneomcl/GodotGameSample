@@ -1,14 +1,14 @@
 {
     "SceneName": "Scene1",
     "eventTarget": {
-        "Guard": {
+        "Door": {
             "Start": {
-                "Name": "entrGuardInitial",
+                "Name": "doorInitial",
                 "Flag": false
             },
-            "Repeat": {
-                "Name": "entrGuardRepeat",
-                "Flag": false
+            "Unlock" : {
+                "Name": "doorUnlocked",
+                "Flag": "haveInvitation"
             }
         },
         "Professor": {
@@ -26,23 +26,16 @@
             }
         },
         "Invitation": {
-            "Suspicion": 0,
             "Start": {
                 "Name": "invitationGet",
                 "Flag": false
-            },
-            "Suspect": []
+            }
         },
         "Item": {
-            "Suspicion": 5,
             "Start": {
                 "Name": "itemInitial",
                 "Flag": false
             },
-            "Suspect": [
-                "Professor",
-                "Guard"
-            ],
             "Repeat": {
                 "Name": "itemFound",
                 "Flag": false

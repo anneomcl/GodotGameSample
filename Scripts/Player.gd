@@ -19,12 +19,16 @@ func _fixed_process(delta):
 		
 func _input(event):
 	if(canInteract and event.is_action_pressed("interact")):
+		print("Interacting with " + target.get_name())
+		
 		get_node("../../DialogueParser").init_dialogue(target.get_name())
 		canMove = false
+		
+		target.action(inventory)
+		
 		if(target.is_in_group("Item") and inventory.find(target.get_name()) < 0):
 			inventory.append(target.get_name())
-			print(inventory) #TODO: delete this
-			print(target.suspicion)
+			print(inventory)
 
 func move_player():
 	move_direction = Vector2(0,0)

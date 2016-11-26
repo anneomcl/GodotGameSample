@@ -2,7 +2,7 @@
 extends "res://Scripts/Item.gd"
 
 func _ready():
-	suspicion = 4
+	pass
 
 func update_choices(choices):
 	choices["haveInvitation"] = true

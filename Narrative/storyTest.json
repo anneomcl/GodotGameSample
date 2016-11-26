@@ -1,6 +1,6 @@
 {
     "url_key": "vjz9",
-    "title": "A Story Where YOUR CHOICES Affect the Outcome But For Real This Time: The Game",
+    "title": "A Story",
     "updated_at": "2016-09-14T05:58:00Z",
     "created_at": "2016-09-14T05:34:57Z",
     "data": {
@@ -11,6 +11,28 @@
             "textSize": 0,
             "playPoint": "alrightGreatNowW",
             "libraryVisible": true
+        },
+        "doorInitial": {
+            "0": {
+                "content": [
+                    "The door is locked, you need an invitation to get in!",
+                    {
+                        "isEnd": true
+                    }
+                ]
+            },
+            "initial": "0"
+        },
+        "doorUnlocked" : {
+            "0": {
+                "content": [
+                    "You unlocked the door!",
+                    {
+                        "isEnd": true
+                    }
+                ]
+            },
+            "initial": "0"
         },
         "invitationGet": {
             "0": {
@@ -56,7 +78,7 @@
             },
             "1": {
                 "content": [
-                    "Seriously, I have better things to do.",
+                    "I have better things to do.",
                     {
                         "isEnd": true
                     }
@@ -78,7 +100,15 @@
                 "content": [
                     "Yup, definitely a brick.",
                     {
-                        "isEnd": true
+                        "divert": "2"
+                    }
+                ]
+            },
+            "2": {
+                "content": [
+                    "HAHAHA this is for the tutorial!!!! :)",
+                    {
+                        "isEnd":true
                     }
                 ]
             },
